@@ -11,6 +11,7 @@
 		5D4752FD2BF77B2300EA6DAF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4752FC2BF77B2300EA6DAF /* ContentView.swift */; };
 		5D4752FF2BF77B2400EA6DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4752FE2BF77B2400EA6DAF /* Assets.xcassets */; };
 		5D4753022BF77B2400EA6DAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D4753012BF77B2400EA6DAF /* Preview Assets.xcassets */; };
+		5D4753092BF77B3600EA6DAF /* MusicKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4753082BF77B3600EA6DAF /* MusicKitViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,8 @@
 		5D4752FC2BF77B2300EA6DAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5D4752FE2BF77B2400EA6DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D4753012BF77B2400EA6DAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5D4753082BF77B3600EA6DAF /* MusicKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKitViewModel.swift; sourceTree = "<group>"; };
+		5D47530A2BF77E2000EA6DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +54,10 @@
 		5D4752F92BF77B2300EA6DAF /* MusicKitFunction */ = {
 			isa = PBXGroup;
 			children = (
+				5D47530A2BF77E2000EA6DAF /* Info.plist */,
 				5D4752FA2BF77B2300EA6DAF /* MusicKitFunctionApp.swift */,
 				5D4752FC2BF77B2300EA6DAF /* ContentView.swift */,
+				5D4753082BF77B3600EA6DAF /* MusicKitViewModel.swift */,
 				5D4752FE2BF77B2400EA6DAF /* Assets.xcassets */,
 				5D4753002BF77B2400EA6DAF /* Preview Content */,
 			);
@@ -139,6 +144,7 @@
 			files = (
 				5D4752FD2BF77B2300EA6DAF /* ContentView.swift in Sources */,
 				5D4752FB2BF77B2300EA6DAF /* MusicKitFunctionApp.swift in Sources */,
+				5D4753092BF77B3600EA6DAF /* MusicKitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +281,14 @@
 				DEVELOPMENT_TEAM = 8VQ7U9Z9U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicKitFunction/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Apple Music内での検索や曲の再生には、メディアライブラリへのアクセスが必要です。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +313,14 @@
 				DEVELOPMENT_TEAM = 8VQ7U9Z9U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MusicKitFunction/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Apple Music内での検索や曲の再生には、メディアライブラリへのアクセスが必要です。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
