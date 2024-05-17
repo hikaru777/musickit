@@ -7,6 +7,7 @@
 
 import MusicKit
 import SwiftUI
+import StoreKit
 import MediaPlayer
 
 struct ContentView: View {
@@ -30,8 +31,10 @@ struct ContentView: View {
                     .padding(.bottom,30)
                     .onAppear(perform: {
                         Task {
-                           try await viewModel.getCrrentMusic()
-                            try await MusicKitViewModel.getSpecificSongsOnCatalog(ID: viewModel.response.items.last!.id)
+    
+                            try await viewModel.getCrrentMusic()
+                            try await viewModel.getMusicDataInUserHeavyRotation()
+                            try await viewModel.getSpecificSongsOnCatalog(ID: viewModel.response.items.last!.id)
                             try await viewModel.getSpecificSongsOnCatalogWithName(title: "ファジーネーブル", artist: "CONTON CANDY")
                         }
                     })

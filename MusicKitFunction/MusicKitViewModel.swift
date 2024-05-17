@@ -24,7 +24,7 @@ class MusicKitViewModel: NSObject, ObservableObject {
     
     
     //apple Music上のデータからidを使って曲の情報を取得する
-    static func getSpecificSongsOnCatalog(ID: MusicItemID) async throws ->  MusicItemCollection<Song>.Element {
+    func getSpecificSongsOnCatalog(ID: MusicItemID) async throws ->  MusicItemCollection<Song>.Element {
         //試しに上の関数で取ってきた30個目の曲の情報を持ってくる
         //idは曲一つ一つに必ず振られてるからidだけ抑えとけばこれで検索できる
         let Songrequest = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: ID)
@@ -38,7 +38,7 @@ class MusicKitViewModel: NSObject, ObservableObject {
     //idがわかんなくて曲名で検索したい時はこっち
     func getSpecificSongsOnCatalogWithName(title: String, artist: String) async throws -> Task<MusicItemID, Never> {
         //別に返り値は自由でいいただID押さえてる方がもっと詳しい情報取ってこれるし処理楽だから作ったけっっこう力技関数
-        //この関数はアーティスト名と曲名とIDしか取ってこれないからID取ってきた後に上の関数との併用おすすめこれ使うなら
+        //これ使うならID取ってきた後に上の関数との併用おすすめ返り値の設定うまくいかないのよ
             Task {
                 var musicID = MusicItemID("")
                 do {
@@ -56,6 +56,19 @@ class MusicKitViewModel: NSObject, ObservableObject {
                 return musicID
             }
         
+    }
+    
+    func getMusicDataInUserHeavyRotation() async throws /*-> musicData*/  {
+        
+        let libURL = URL(string: "https://api.music.apple.com/v1/me/history/heavy-rotation?limit=1")!
+        
+        let request = MusicDataRequest(urlRequest: URLRequest(url: libURL))
+        
+        let dataResponse = try await request.response()
+        print("😺",String(data: dataResponse.data, encoding: .utf8)!,dataResponse.urlResponse.statusCode)
+//        let result = try JSONDecoder().decode(musicData.self, from: dataResponse.data)
+//        
+//        return result
     }
     
     
