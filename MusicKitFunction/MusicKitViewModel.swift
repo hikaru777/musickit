@@ -18,21 +18,22 @@ class MusicKitViewModel: NSObject, ObservableObject {
         //limitで取得個数制限
         musicRequest.limit = 30
         response = try await musicRequest.response()
-        print("最近聴いた曲",response!.items.count)
+        print("最近聴いた曲",response!.items.debugDescription)
         
     }
+    
+    
     //apple Music上のデータからidを使って曲の情報を取得する
-    func getSpecificSongsOnCatalog(ID: MusicItemID) async throws {
-        
-        Task {
-            //試しに上の関数で取ってきた30個目の曲の情報を持ってくる
-                let Request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: ID)
-                let Response = try await Request.response()
-            print("id検索結果",Response.items.debugDescription)
-            //idは曲一つ一つに必ず振られてるからidだけ抑えとけばこれで検索できる
-        }
-        
+    static func getSpecificSongsOnCatalog(ID: MusicItemID) async throws ->  MusicItemCollection<Song>.Element {
+        //試しに上の関数で取ってきた30個目の曲の情報を持ってくる
+        //idは曲一つ一つに必ず振られてるからidだけ抑えとけばこれで検索できる
+        let Songrequest = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: ID)
+        let Songresponse = try await Songrequest.response()
+        let song = Songresponse.items.first
+        print("id検索結果",song)
+        return song!
     }
+    
     
     //idがわかんなくて曲名で検索したい時はこっち
     func getSpecificSongsOnCatalogWithName(title: String, artist: String) async throws -> Task<MusicItemID, Never> {

@@ -31,7 +31,7 @@ struct ContentView: View {
                     .onAppear(perform: {
                         Task {
                            try await viewModel.getCrrentMusic()
-                            try await viewModel.getSpecificSongsOnCatalog(ID: viewModel.response.items.last!.id)
+                            try await MusicKitViewModel.getSpecificSongsOnCatalog(ID: viewModel.response.items.last!.id)
                             try await viewModel.getSpecificSongsOnCatalogWithName(title: "ファジーネーブル", artist: "CONTON CANDY")
                         }
                     })
