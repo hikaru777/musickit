@@ -36,6 +36,7 @@ struct ContentView: View {
                             try await viewModel.getMusicDataInUserHeavyRotation()
                             try await viewModel.getSpecificSongsOnCatalog(ID: viewModel.response.items.last!.id)
                             try await viewModel.getSpecificSongsOnCatalogWithName(title: "ファジーネーブル", artist: "CONTON CANDY")
+                            try await viewModel.addMusicToLikedMusicLibrary(ID: MusicItemID("1681024620"))
                         }
                     })
             }
