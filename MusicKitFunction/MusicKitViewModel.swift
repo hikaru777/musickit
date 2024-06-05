@@ -125,6 +125,25 @@ class MusicKitViewModel: NSObject, ObservableObject {
 //    }
 //    これ丸コピで動くよ
     
+    func addMusicToLikedMusicLibrary(emotion: String,ID: MusicItemID) async throws {
+        Task {
+            do {
+                let Request = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: ID)
+                let Response = try await Request.response()
+                var requestPlaylists = MusicLibraryRequest<Playlist>()
+                requestPlaylists.filter(text: emotion)
+                let responsePlaylists = try await requestPlaylists.response()
+                try await MusicLibrary.shared.add(Response.items.first!, to: responsePlaylists.items.first!)
+            } catch (let error) {
+                print(error)
+            }
+        }
+    }
     
+//    Task {
+//        try await MusicKitViewModel().addMusicToLikedMusicLibrary(emotion: MusicKitViewModel().emotionImageName[emotionNum],ID: MusicItemID(musicIDString))
+//    }
+//    ↑
+//    これsaveの関数の一番したにまんま書いたら動くよ
     
 }
