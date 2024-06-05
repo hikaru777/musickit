@@ -60,7 +60,7 @@ class MusicKitViewModel: NSObject, ObservableObject {
     
     func getMusicDataInUserHeavyRotation() async throws /*-> musicData*/  {
         
-        let libURL = URL(string: "https://api.music.apple.com/v1/me/history/heavy-rotation?limit=1")!
+        let libURL = URL(string: "https://api.music.apple.com/v1/me/history/heavy-rotation")!
         //        var request = URLRequest(url: libURL)
         //        let data = try await URLSession.shared.data(for: request)
         //        print("😺",String(data: data.0, encoding: .utf8)!)
@@ -73,7 +73,6 @@ class MusicKitViewModel: NSObject, ObservableObject {
         //
         //        return result
     }
-    
     
     
     
@@ -108,6 +107,23 @@ class MusicKitViewModel: NSObject, ObservableObject {
             }
         }
     }
+    
+    func startSystemMusic(ID: MusicItemID) {
+        Task {
+            do {
+                let song = try await getSpecificSongsOnCatalog(ID: ID)
+                SystemMusicPlayer.shared.queue = [song]
+                try await SystemMusicPlayer.shared.play()
+            } catch {
+                print("システムで再生する時のエラー",error.localizedDescription)
+            }
+        }
+    }
+    
+//    @IBAction func playButtonTapped() {
+//        viewModel?.startSystemMusic(ID: musicID)
+//    }
+//    これ丸コピで動くよ
     
     
     
