@@ -80,10 +80,10 @@ class MusicKitViewModel: NSObject, ObservableObject {
     
     //これはコピペでいいプレイリストの名前はnameで自分で決めて
     //AppDelegateの編集ちゃんとしてね
-    static func createMusicPlaylist() async throws {
+    static func createMusicPlaylist(name: String) async throws {
         Task {
             do{
-                try await MusicLibrary.shared.createPlaylist(name: "created from Music app Playlist", description: "A library of songs shared by the app.", authorDisplayName: nil)
+                try await MusicLibrary.shared.createPlaylist(name: name, description: "A library of songs shared by the app.", authorDisplayName: nil)
             }catch{
                 print("😺",error)
             }

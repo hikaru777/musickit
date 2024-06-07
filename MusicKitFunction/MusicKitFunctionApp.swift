@@ -19,12 +19,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             
             //プレイリストを一回だけ作って以後作られないようにするための分岐
             //関数でまとめたかったらまとめちゃって＾
-            let requestPlaylists = MusicLibraryRequest<Playlist>()
-            let responsePlaylists = try await requestPlaylists.response()
-            let playlists = responsePlaylists.items
-            print("🐶",requestPlaylists, responsePlaylists.items)
-            if !playlists.contains(where: { $0.name == "created from Music app Playlist" }) {
-                try await MusicKitViewModel.createMusicPlaylist()
+            let emotionNames = ["happy", "regret", "anxiety", "angry", "sad", "love", "joy", "tired"]
+            emotionNames.map { name in
+                Task {
+                    let requestPlaylists = MusicLibraryRequest<Playlist>()
+                    let responsePlaylists = try await requestPlaylists.response()
+                    let playlists = responsePlaylists.items
+                    print("🐶",requestPlaylists, responsePlaylists.items)
+                    if !playlists.contains(where: { $0.name == name }) {
+                        try await MusicKitViewModel.createMusicPlaylist(name: name)
+                    }
+                }
             }
             
             
